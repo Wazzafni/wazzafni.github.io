@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complete your subscription — Wazzafni</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Tajawal:wght@400;500;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream:        #FAF3E4;
+    --cream-deep:   #F1E4C8;
+    --ink:          #4A2419;
+    --ink-soft:     #6B3A22;
+    --saffron:      #C98A2C;
+    --saffron-deep: #A9711E;
+    --palm:         #1F5C4A;
+    --palm-deep:    #163F33;
+    --clay:         #B5542A;
+    --gold-line:    #E4B96A;
+    --paper:        #FFFDF8;
+
+    --font-en-display: 'Fraunces', serif;
+    --font-ar-display: 'Aref Ruqaa', serif;
+    --font-en-body:    'Work Sans', sans-serif;
+    --font-ar-body:    'Tajawal', sans-serif;
+
+    --font-heading: var(--font-en-display);
+    --font-body:    var(--font-en-body);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  body.lang-ar { --font-heading: var(--font-ar-display); --font-body: var(--font-ar-body); }
+
+  a { color: inherit; }
+
+  header { padding: 24px 0; display: flex; align-items: center; justify-content: center; gap: 16px; position: relative; }
+  .logo-ar { font-family: var(--font-ar-display); font-size: 1.9rem; color: var(--ink); font-weight: 700; }
+
+  .lang-toggle {
+    position: absolute; right: 24px; top: 24px;
+    display: inline-flex; border: 1px solid var(--gold-line); border-radius: 999px; overflow: hidden;
+    font-family: var(--font-en-body); font-size: 0.8rem; font-weight: 600;
+  }
+  body.lang-ar .lang-toggle { right: auto; left: 24px; }
+  .lang-toggle button { border: none; background: var(--paper); color: var(--ink-soft); padding: 6px 12px; cursor: pointer; }
+  .lang-toggle button.active { background: var(--palm); color: var(--paper); }
+
+  main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 20px; }
+
+  .card {
+    background: var(--paper); border: 1px solid var(--gold-line); border-radius: 22px;
+    max-width: 460px; width: 100%; padding: 36px 32px; text-align: center;
+    box-shadow: 0 24px 50px -30px rgba(74,36,25,0.35);
+  }
+
+  .back-link { font-family: var(--font-body); display: inline-block; font-size: 0.85rem; color: var(--ink-soft); text-decoration: none; margin-bottom: 18px; }
+  .back-link:hover { color: var(--palm); }
+
+  h1 { font-family: var(--font-heading); font-weight: 500; font-size: 1.5rem; margin: 0 0 6px; }
+  .group-name { color: var(--saffron-deep); font-weight: 600; }
+
+  .price-line { font-family: var(--font-en-body); font-size: 2.2rem; font-weight: 700; color: var(--palm); margin: 18px 0 6px; }
+  .price-line span { font-family: var(--font-body); font-size: 0.85rem; font-weight: 500; color: var(--ink-soft); }
+
+  .barcode-box {
+    margin: 26px 0; border: 1px solid var(--gold-line); border-radius: 16px;
+    padding: 20px; background: var(--cream-deep); color: var(--ink-soft); font-size: 0.92rem;
+    font-family: var(--font-body);
+  }
+  .barcode-box img { max-width: 240px; width: 100%; border-radius: 10px; display: block; margin: 0 auto; }
+
+  .instructions {
+    font-family: var(--font-body);
+    text-align: left;
+    font-size: 0.9rem; color: var(--ink-soft); background: var(--cream-deep);
+    border-radius: 14px; padding: 16px 18px; margin-bottom: 22px;
+  }
+  body.lang-ar .instructions { text-align: right; }
+  .instructions li { margin-bottom: 6px; }
+
+  .btn {
+    font-family: var(--font-body);
+    display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 0.95rem;
+    padding: 12px 24px; border-radius: 999px; text-decoration: none;
+    background: var(--palm); color: var(--paper);
+    transition: transform 0.15s ease, background 0.2s ease;
+  }
+  .btn:hover { background: var(--palm-deep); transform: translateY(-2px); }
+
+  footer { font-family: var(--font-body); text-align: center; font-size: 0.8rem; color: var(--ink-soft); padding: 20px; }
+
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--saffron); outline-offset: 2px; }
+</style>
+</head>
+<body class="lang-ar">
+
+<header>
+  <div class="logo-ar">وظفني</div>
+  <div class="lang-toggle">
+    <button id="btnEn" onclick="setLang('en')">EN</button>
+    <button id="btnAr" class="active" onclick="setLang('ar')">عربي</button>
+  </div>
+</header>
+
+<main>
+  <div class="card">
+    <a class="back-link" id="backLink" href="index.html">&larr; Back to job groups</a>
+    <h1><span data-i18n="subscribeTo">Subscribe to</span> <span class="group-name" id="groupName">your group</span></h1>
+    <div class="price-line"><span id="priceValue">20</span> <span id="priceUnit">SAR / year</span></div>
+
+    <div class="barcode-box">
+      <img src="qr-code.jpg" alt="STC Pay QR code — Mohammed Al-Qahtani">
+    </div>
+
+    <ul class="instructions">
+      <li data-i18n="instr1">Scan the barcode above with the STC Pay app to complete payment.</li>
+      <li data-i18n="instr2">After paying, message us on WhatsApp or Telegram with your payment confirmation.</li>
+      <li data-i18n="instr3">We'll add you to your group within 24 hours.</li>
+    </ul>
+
+    <a class="btn" id="whatsappBtn" href="#" target="_blank" rel="noopener" data-i18n="paidBtn">I've paid — message us on WhatsApp</a>
+  </div>
+</main>
+
+<footer data-i18n="footerLine">وظفني · Wazzafni — Founded August 12, 2026</footer>
+
+<script>
+  const I18N = {
+    en: {
+      backLink: "← Back to job groups",
+      subscribeTo: "Subscribe to",
+      priceUnit: "SAR / year",
+      instr1: "Scan the barcode above with the STC Pay app to complete payment.",
+      instr2: "After paying, message us on WhatsApp or Telegram with your payment confirmation.",
+      instr3: "We'll add you to your group within 24 hours.",
+      paidBtn: "I've paid — message us on WhatsApp",
+      whatsappMsg: (group) => `Hi Wazzafni, I just paid for my ${group || ""} subscription.`,
+      footerLine: "وظفني · Wazzafni — Founded August 12, 2026",
+    },
+    ar: {
+      backLink: "→ العودة إلى المجموعات",
+      subscribeTo: "اشترك في",
+      priceUnit: "ريال / سنويًا",
+      instr1: "امسح الرمز أعلاه باستخدام تطبيق STC Pay لإتمام الدفع.",
+      instr2: "بعد الدفع، راسلنا على واتساب أو تيليجرام مع تأكيد الدفع.",
+      instr3: "سنضيفك إلى مجموعتك خلال 24 ساعة.",
+      paidBtn: "لقد دفعت — راسلنا على واتساب",
+      whatsappMsg: (group) => `مرحبًا وظفني، لقد دفعت للتو اشتراك ${group || ""}.`,
+      footerLine: "وظفني — تأسست في 12 أغسطس 2026",
+    }
+  };
+
+  const params = new URLSearchParams(window.location.search);
+  const group = params.get("group") || "";
+  const price = params.get("price") || "20";
+  const urlLang = params.get("lang") === "en" ? "en" : "ar";
+
+  let currentLang = urlLang;
+
+  function applyStaticText() {
+    const t = I18N[currentLang];
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const key = el.getAttribute("data-i18n");
+      if (t[key] !== undefined) el.textContent = t[key];
+    });
+    document.getElementById("backLink").textContent = t.backLink;
+    document.getElementById("priceUnit").textContent = t.priceUnit;
+    // Replace the phone number below with your real WhatsApp business number once ready.
+    document.getElementById("whatsappBtn").href =
+      `https://wa.me/966556144456?text=${encodeURIComponent(t.whatsappMsg(group))}`;
+  }
+
+  function setLang(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+    document.body.classList.toggle("lang-ar", lang === "ar");
+    document.body.classList.toggle("lang-en", lang === "en");
+    document.getElementById("btnEn").classList.toggle("active", lang === "en");
+    document.getElementById("btnAr").classList.toggle("active", lang === "ar");
+    applyStaticText();
+  }
+
+  document.getElementById("groupName").textContent = group || (urlLang === "ar" ? "مجموعتك" : "your group");
+  document.getElementById("priceValue").textContent = price;
+  document.getElementById("backLink").setAttribute("href", `index.html?lang=${urlLang}`);
+
+  setLang(urlLang);
+</script>
+
+</body>
+</html>
